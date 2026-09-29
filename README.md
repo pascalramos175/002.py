@@ -1,69 +1,235 @@
-# 👋 Saudação Personalizada — Python
+# 👤 Sistema de Dados Pessoais — CLI
 
-Um programa simples em **Python** que solicita o nome do usuário e exibe uma saudação personalizada.
+Um sistema simples de **cadastro e gerenciamento de dados pessoais**, desenvolvido em **Python** e executado diretamente pelo terminal.
 
-## 📌 Sobre o projeto
+O projeto permite cadastrar pessoas, armazenar temporariamente seus dados durante a execução do programa e visualizar todos os registros cadastrados através de um menu interativo.
 
-Este projeto demonstra como receber informações digitadas pelo usuário através do terminal e utilizá-las para criar uma mensagem personalizada.
+> 📌 Este é o **segundo projeto** da sequência de exercícios em Python.
 
-O programa pergunta o nome do usuário e, em seguida, exibe uma saudação utilizando o nome informado.
+## 🚀 Funcionalidades
 
-## 💻 Código
+* 👤 Cadastro de novas pessoas
+* 📋 Listagem de pessoas cadastradas
+* 🔢 Validação da idade
+* 🗃️ Armazenamento temporário dos dados
+* 🖥️ Menu interativo pelo terminal
+* 🧹 Limpeza automática da tela
+* ❌ Tratamento de opções inválidas
+* 🔄 Navegação entre diferentes funções do sistema
 
-```python
-nome = input("Qual é o seu nome? ")
-print(f"Olá, {nome}!")
+## 🛠️ Tecnologias
+
+* **Python 3**
+* `os`
+
+O projeto utiliza apenas módulos da biblioteca padrão do Python, não sendo necessário instalar dependências externas.
+
+## 📥 Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/pascalramos175/002.py.git
 ```
 
-## 🔎 Como funciona?
+Entre na pasta:
 
-### `input()`
-
-A função `input()` permite receber uma informação digitada pelo usuário.
-
-```python
-nome = input("Qual é o seu nome? ")
+```bash
+cd 002.py
 ```
 
-Nesse caso:
+Execute o programa:
 
-* `"Qual é o seu nome? "` é a pergunta exibida no terminal.
-* O usuário digita seu nome.
-* O valor digitado é armazenado na variável `nome`.
-
-### `print()`
-
-A função `print()` exibe uma mensagem no terminal:
-
-```python
-print(f"Olá, {nome}!")
+```bash
+python main.py
 ```
 
-O `f` antes das aspas indica uma **f-string**, permitindo inserir o valor de uma variável diretamente dentro do texto utilizando `{}`.
+> Caso o arquivo Python possua outro nome, substitua `main.py` pelo nome correspondente.
 
-## ▶️ Exemplo de execução
+## 💻 Utilização
+
+Ao executar o programa, será apresentado um menu:
 
 ```text
-Qual é o seu nome? Pascal
-Olá, Pascal!
+=================================
+  SISTEMA DE DADOS PESSOAIS
+=================================
+1. Cadastrar nova pessoa
+2. Listar pessoas cadastradas
+3. Sair
+=================================
+Escolha uma opção (1-3):
 ```
 
-## 📚 Conceitos aprendidos
+### 1️⃣ Cadastrar uma pessoa
 
-| Conceito  | Descrição                                  |
-| --------- | ------------------------------------------ |
-| `input()` | Recebe dados digitados pelo usuário        |
-| Variáveis | Armazenam informações durante a execução   |
-| `print()` | Exibe informações no terminal              |
-| f-string  | Permite inserir variáveis dentro de textos |
-| Strings   | Representam textos em Python               |
+Escolha a opção `1`:
+
+```text
+=== CADASTRAR NOVA PESSOA ===
+
+Digite o nome completo: João Silva
+Digite a idade: 20
+Digite o e-mail: joao@email.com
+Digite o telefone (com DDD): (48) 99999-9999
+```
+
+Após o preenchimento:
+
+```text
+✅ João Silva foi cadastrado(a) com sucesso!
+```
+
+Os dados são armazenados temporariamente enquanto o programa estiver em execução.
+
+### 2️⃣ Listar pessoas
+
+Escolha a opção `2` para visualizar os registros:
+
+```text
+=== PESSOAS CADASTRADAS ===
+
+[Registro #1]
+  Nome: João Silva
+  Idade: 20
+  Email: joao@email.com
+  Telefone: (48) 99999-9999
+------------------------------
+```
+
+Caso nenhuma pessoa tenha sido cadastrada:
+
+```text
+Nenhum dado pessoal foi registrado ainda.
+```
+
+### 3️⃣ Sair
+
+A opção `3` encerra o programa:
+
+```text
+Encerrando o programa. Até logo!
+```
+
+## ⚠️ Validação de idade
+
+O sistema verifica se a idade informada é realmente um número inteiro.
+
+Por exemplo:
+
+```text
+Digite a idade: abc
+Por favor, digite um número válido para a idade.
+```
+
+O programa continuará solicitando a idade até que um número válido seja informado.
+
+## 🗃️ Armazenamento
+
+Os dados são armazenados em uma lista chamada:
+
+```python
+banco_de_dados = []
+```
+
+Cada pessoa cadastrada é representada por um dicionário:
+
+```python
+pessoa = {
+    "Nome": nome,
+    "Idade": idade,
+    "Email": email,
+    "Telefone": telefone
+}
+```
+
+Os registros são adicionados à lista utilizando:
+
+```python
+banco_de_dados.append(pessoa)
+```
+
+### ⚠️ Armazenamento temporário
+
+Este projeto **não utiliza um banco de dados real**.
+
+Os registros ficam armazenados apenas na memória RAM durante a execução do programa. Ao fechar o programa, todos os dados cadastrados são perdidos.
+
+## 🧹 Limpeza do terminal
+
+O projeto utiliza o módulo `os` para limpar o terminal antes de exibir cada tela:
+
+```python
+os.system('cls' if os.name == 'nt' else 'clear')
+```
+
+Dessa forma, o comando utilizado depende do sistema operacional:
+
+* **Windows:** `cls`
+* **Linux/macOS:** `clear`
+
+## 📂 Estrutura do projeto
+
+```text
+002.py/
+│
+├── main.py
+└── README.md
+```
+
+## 🧠 Conceitos praticados
+
+Este projeto foi desenvolvido para praticar conceitos fundamentais de Python, incluindo:
+
+* Variáveis
+* Listas
+* Dicionários
+* Funções
+* `input()`
+* `print()`
+* Estruturas condicionais
+* Loops `while`
+* Loops `for`
+* `try/except`
+* Manipulação de strings
+* Módulos
+* `os.system()`
+* Estruturas de dados
+* Organização de aplicações via terminal
 
 ## 🎯 Objetivo
 
-Este projeto foi desenvolvido para praticar **entrada e saída de dados**, variáveis e formatação de strings em Python.
+O objetivo deste projeto é praticar a criação de uma aplicação interativa em Python utilizando estruturas básicas da linguagem.
 
-É um pequeno passo para começar a criar programas interativos.
+O projeto também serve como uma introdução a conceitos que podem posteriormente ser utilizados em sistemas mais complexos, como:
+
+* Sistemas de cadastro
+* APIs
+* Bancos de dados
+* Sistemas CRUD
+* Aplicações web
+* Sistemas de gerenciamento
+
+## 📚 Próximos passos
+
+Algumas melhorias que poderiam ser implementadas futuramente:
+
+* 💾 Persistência dos dados em arquivo JSON
+* 🗄️ Utilização de SQLite
+* ✏️ Edição de pessoas cadastradas
+* 🗑️ Exclusão de registros
+* 🔎 Busca por nome ou e-mail
+* 📧 Validação de e-mail
+* 📱 Formatação e validação de telefone
+* 🔐 Sistema de autenticação
+* 🖥️ Interface gráfica
+
+## 👨‍💻 Autor
+
+**Pascal Ramos**
+
+GitHub: [@pascalramos175](https://github.com/pascalramos175)
 
 ---
 
-🐍 **Python — Projeto de Introdução**
+⭐ Se este projeto foi útil para você, considere deixar uma estrela no repositório!
